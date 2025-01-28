@@ -7,7 +7,7 @@ from .exceptions import user_not_exist_exception
 
 users_router = Router()
 
-@users_router.post('/', response={201: dict, 401: dict, 500: dict})
+@users_router.post('/', response={201: dict, 401: dict, 500: dict}, tags=["Users"])
 def create_user(request, user_schema: UserSchema):
     exists_user = exists_user_by_email(user_schema.email)
     if not exists_user:
@@ -20,7 +20,7 @@ def create_user(request, user_schema: UserSchema):
 
     return 201, {'data': user_schema.dict()}
     
-@users_router.post('/get-token', response={200: dict, 404: dict, 500: dict})
+@users_router.post('/get-token', response={200: dict, 404: dict, 500: dict}, tags=["Users"])
 @user_not_exist_exception
 def get_user_token(request, get_token_schema: GetTokenSchema):
     email = get_token_schema.email

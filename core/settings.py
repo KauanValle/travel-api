@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'travel',
-    'users'
+    'users',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [
